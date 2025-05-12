@@ -3,6 +3,7 @@
 import React from "react";
 import Head from "next/head";
 import Link from "next/link";
+import Image from "next/image";
 
 const metaTags = {
   businessName: "Himalayan Rides",
@@ -11,12 +12,88 @@ const metaTags = {
     "Welcome to Himalayan Rides - providing the best taxi services and travel assistance in Dalhousie and Himachal Pradesh. Explore our travel packages and taxi services for a smooth journey in the scenic landscapes of HP.",
   keywords:
     "Dalhousie taxi service, Himachal Pradesh cab, travel Dalhousie HP, best taxi Dalhousie, HP sightseeing tour, Himalayan rides, taxi booking Dalhousie",
-  ogImage: "https://www.himalayanrides.com/assets/og-image.jpg",
+  ogImage: "/assets/og-image.jpg", // Assuming this image is in your public/assets folder
   googleReviews: "https://www.google.com/search?q=himalayan+rides+reviews",
   instagram: "https://instagram.com/himalayanrides",
   youtube: "https://youtube.com/himalayanrides",
   phone: "+91-9876543210",
 };
+
+const featuredDestinations = [
+  {
+    title: "Dalhousie",
+    description:
+      "Discover the colonial charm of Dalhousie, nestled amidst pine-clad valleys. Perfect for a serene getaway with stunning views of the Dhauladhar range.",
+    highlights: ["Khajjiar - Mini Switzerland", "Dainkund Peak", "St. John's Church"],
+    image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80",
+  },
+  {
+    title: "Manali",
+    description:
+      "A paradise for adventure lovers, Manali offers breathtaking views, thrilling activities, and a vibrant local culture.",
+    highlights: ["Rohtang Pass", "Solang Valley", "Hidimba Temple"],
+    image: "https://images.unsplash.com/photo-1592194996308-7b43878e84a6?auto=format&fit=crop&w=600&q=80",
+  },
+  {
+    title: "Shimla",
+    description:
+      "The queen of hills, Shimla is known for its colonial architecture, bustling markets, and panoramic views of the Himalayas.",
+    highlights: ["The Ridge", "Mall Road", "Jakhoo Temple"],
+    image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80",
+  },
+];
+
+const ourFleet = [
+  {
+    name: "Sedan",
+    description: "Ideal for small families or solo travelers. Comfortable and fuel-efficient.",
+    capacity: "4 Passengers",
+    price: "₹30/km",
+    image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80",
+  },
+  {
+    name: "SUV",
+    description: "Perfect for group travel or rugged terrains. Spacious and powerful.",
+    capacity: "6 Passengers",
+    price: "₹40/km",
+    image: "https://images.unsplash.com/photo-1581235720704-06d3acfcb36f?auto=format&fit=crop&w=600&q=80",
+  },
+  {
+    name: "Innova",
+    description: "Great for family trips with extra space and luxury features.",
+    capacity: "7 Passengers",
+    price: "₹45/km",
+    image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80",
+  },
+  {
+    name: "Tempo Traveller",
+    description: "Best for large groups. Enjoy a hassle-free journey with ample space.",
+    capacity: "12 Passengers",
+    price: "₹60/km",
+    image: "https://images.unsplash.com/photo-1581235720704-06d3acfcb36f?auto=format&fit=crop&w=600&q=80",
+  },
+];
+
+const customerTestimonials = [
+  {
+    name: "Rohit Sharma",
+    review:
+      "Himalayan Rides made our trip to Manali unforgettable! The driver was knowledgeable, and the car was in great condition.",
+    rating: 5,
+  },
+  {
+    name: "Priya Kapoor",
+    review:
+      "We booked a sedan for our Shimla tour, and the experience was seamless. Highly recommend their services!",
+    rating: 4.5,
+  },
+  {
+    name: "Amit Verma",
+    review:
+      "The Tempo Traveller was perfect for our group of 10. The journey to Dalhousie was comfortable and enjoyable.",
+    rating: 5,
+  },
+];
 
 const Home = () => {
   return (
@@ -74,37 +151,17 @@ const Home = () => {
               Explore Top Destinations in Himachal Pradesh
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-              {[
-                {
-                  title: "Dalhousie",
-                  description:
-                    "Discover the colonial charm of Dalhousie, nestled amidst pine-clad valleys. Perfect for a serene getaway with stunning views of the Dhauladhar range.",
-                  highlights: ["Khajjiar - Mini Switzerland", "Dainkund Peak", "St. John's Church"],
-                  image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80",
-                },
-                {
-                  title: "Manali",
-                  description:
-                    "A paradise for adventure lovers, Manali offers breathtaking views, thrilling activities, and a vibrant local culture.",
-                  highlights: ["Rohtang Pass", "Solang Valley", "Hidimba Temple"],
-                  image: "https://images.unsplash.com/photo-1592194996308-7b43878e84a6?auto=format&fit=crop&w=600&q=80",
-                },
-                {
-                  title: "Shimla",
-                  description:
-                    "The queen of hills, Shimla is known for its colonial architecture, bustling markets, and panoramic views of the Himalayas.",
-                  highlights: ["The Ridge", "Mall Road", "Jakhoo Temple"],
-                  image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80",
-                },
-              ].map((destination, index) => (
+              {featuredDestinations.map((destination, index) => (
                 <div
                   key={index}
                   className="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition duration-300"
                 >
-                  <img
+                  <Image
                     src={destination.image}
                     alt={destination.title}
                     className="w-full h-48 object-cover"
+                    width={600} // Specify the width of the image
+                    height={48 * (600 / 800)} // Maintain aspect ratio, adjust if needed
                   />
                   <div className="p-6">
                     <h3 className="text-xl font-semibold mb-4">{destination.title}</h3>
@@ -135,44 +192,17 @@ const Home = () => {
               Our Fleet - Travel in Comfort
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-              {[
-                {
-                  name: "Sedan",
-                  description: "Ideal for small families or solo travelers. Comfortable and fuel-efficient.",
-                  capacity: "4 Passengers",
-                  price: "₹30/km",
-                  image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80",
-                },
-                {
-                  name: "SUV",
-                  description: "Perfect for group travel or rugged terrains. Spacious and powerful.",
-                  capacity: "6 Passengers",
-                  price: "₹40/km",
-                  image: "https://images.unsplash.com/photo-1581235720704-06d3acfcb36f?auto=format&fit=crop&w=600&q=80",
-                },
-                {
-                  name: "Innova",
-                  description: "Great for family trips with extra space and luxury features.",
-                  capacity: "7 Passengers",
-                  price: "₹45/km",
-                  image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80",
-                },
-                {
-                  name: "Tempo Traveller",
-                  description: "Best for large groups. Enjoy a hassle-free journey with ample space.",
-                  capacity: "12 Passengers",
-                  price: "₹60/km",
-                  image: "https://images.unsplash.com/photo-1581235720704-06d3acfcb36f?auto=format&fit=crop&w=600&q=80",
-                },
-              ].map((car, index) => (
+              {ourFleet.map((car, index) => (
                 <div
                   key={index}
                   className="bg-white dark:bg-gray-700 rounded-lg shadow-lg overflow-hidden text-center transform hover:scale-105 transition duration-300"
                 >
-                  <img
+                  <Image
                     src={car.image}
                     alt={car.name}
                     className="w-full h-40 object-cover"
+                    width={600} // Specify the width of the image
+                    height={40 * (600 / 800)} // Maintain aspect ratio, adjust if needed
                   />
                   <div className="p-6">
                     <h3 className="text-xl font-semibold mb-4">{car.name}</h3>
@@ -204,32 +234,13 @@ const Home = () => {
               What Our Customers Say
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {[
-                {
-                  name: "Rohit Sharma",
-                  review:
-                    "Himalayan Rides made our trip to Manali unforgettable! The driver was knowledgeable, and the car was in great condition.",
-                  rating: 5,
-                },
-                {
-                  name: "Priya Kapoor",
-                  review:
-                    "We booked a sedan for our Shimla tour, and the experience was seamless. Highly recommend their services!",
-                  rating: 4.5,
-                },
-                {
-                  name: "Amit Verma",
-                  review:
-                    "The Tempo Traveller was perfect for our group of 10. The journey to Dalhousie was comfortable and enjoyable.",
-                  rating: 5,
-                },
-              ].map((testimonial, index) => (
+              {customerTestimonials.map((testimonial, index) => (
                 <div
                   key={index}
                   className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 transform hover:scale-105 transition duration-300"
                 >
                   <p className="text-gray-600 dark:text-gray-300 mb-4">
-                    "{testimonial.review}"
+                    &quot;{testimonial.review}&quot;
                   </p>
                   <p className="font-semibold">{testimonial.name}</p>
                   <p className="text-yellow-400">
