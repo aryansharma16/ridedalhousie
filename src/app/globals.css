@@ -27,3 +27,7 @@ body {
   color: var(--foreground);
   font-family: var(--font-geist-sans); /* Use your font variable */
 }
+main{
+  min-height: 1000px;
+
+}

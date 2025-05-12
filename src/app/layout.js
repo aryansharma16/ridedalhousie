@@ -1,6 +1,8 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/context/ThemeContext"; // Adjust path if needed
+import NavBar from "@/components/Navbar/navBar";
+import Footer from "@/components/Footer/Footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -24,9 +26,10 @@ export default function RootLayout({ children }) {
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <ThemeProvider>
-         {/* <Navbar /> Render your Navbar here */}
-          <main>{children}</main> {/* Consider using <main> for semantic structure */}
-          {/* <Footer /> */}
+          <NavBar />
+          <main >{children}</main>
+          {/* Consider using <main> for semantic structure */}
+          <Footer />
         </ThemeProvider>
       </body>
     </html>
