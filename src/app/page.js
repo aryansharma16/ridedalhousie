@@ -84,6 +84,33 @@ const Home = () => {
       price: "₹13/km",
     },
   ];
+  const reviews = [
+    {
+      name: "Rahul Sharma",
+      location: "Delhi, India",
+      rating: 5,
+      comment:
+        "The best travel experience in Himachal! The guides were knowledgeable and the taxi service was always on time. Highly recommended!",
+      avatar: "/profiles/profile1.jpg", // Optional if you have images
+    },
+    {
+      name: "Sneha Verma",
+      location: "Mumbai, India",
+      rating: 5,
+      comment:
+        "Smooth booking, friendly driver, and amazing hotel arrangements. Will definitely book again!",
+      avatar: "/profiles/profile2.jpg",
+    },
+    {
+      name: "John Peterson",
+      location: "London, UK",
+      rating: 4,
+      comment:
+        "Fantastic views and a safe, reliable ride through the mountains. A memorable journey.",
+      avatar: "/profiles/profile1.jpg",
+    },
+  ];
+
   return (
     <>
       <Head>
@@ -335,35 +362,45 @@ const Home = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[1, 2, 3].map((item) => (
+            {reviews.map((review, index) => (
               <div
-                key={item}
+                key={index}
                 className={`p-6 rounded-lg ${
                   theme === "dark" ? "bg-gray-700" : "bg-blue-50"
                 }`}
               >
                 <div className="flex items-center mb-4">
-                  <div className="text-yellow-400 text-xl">★★★★★</div>
+                  <div className="text-yellow-400 text-xl">
+                    {"★".repeat(review.rating)}
+                  </div>
                 </div>
                 <p
                   className={`mb-4 ${
                     theme === "dark" ? "text-gray-300" : "text-gray-700"
                   }`}
                 >
-                  &quot;The best travel experience in Himachal! The guides were
-                  knowledgeable and the taxi service was always on time. Highly
-                  recommended!&quot;
+                  &quot;{review.comment}&quot;
                 </p>
                 <div className="flex items-center">
-                  <div className="w-10 h-10 rounded-full bg-gray-300 mr-3"></div>
+                  <div className="w-10 h-10 rounded-full bg-gray-300 mr-3 overflow-hidden">
+                    {review.avatar ? (
+                      <Image
+                        src={review.avatar}
+                        alt={review.name}
+                        width={40}
+                        height={40}
+                        className="rounded-full object-cover"
+                      />
+                    ) : null}
+                  </div>
                   <div>
-                    <h4 className="font-medium">Rahul Sharma</h4>
+                    <h4 className="font-medium">{review.name}</h4>
                     <p
                       className={`text-sm ${
                         theme === "dark" ? "text-gray-400" : "text-gray-500"
                       }`}
                     >
-                      Delhi, India
+                      {review.location}
                     </p>
                   </div>
                 </div>
