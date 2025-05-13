@@ -371,7 +371,7 @@ const AboutPage = () => {
                         theme === "dark" ? "text-gray-300" : "text-gray-700"
                       }`}
                     >
-                      "{testimonial.quote}"
+                      &quot;{testimonial.quote}&quot;
                     </p>
                     <p
                       className={`font-medium ${
