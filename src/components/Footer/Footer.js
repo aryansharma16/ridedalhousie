@@ -24,6 +24,14 @@ const Footer = () => {
                 </span>
               </Link>
             </p>
+            <p>
+              Phone:
+              <Link href="">
+                <span className="text-blue-500 hover:underline">
+                  9927332781
+                </span>
+              </Link>
+            </p>
           </div>
           php-template Copy Edit
           {/* Social Links Section */}

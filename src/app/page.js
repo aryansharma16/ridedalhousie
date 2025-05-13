@@ -4,109 +4,102 @@ import React from "react";
 import Head from "next/head";
 import Link from "next/link";
 import Image from "next/image";
+import { useTheme } from "@/context/ThemeContext";
 
 const metaTags = {
   businessName: "Himalayan Rides",
-  websiteUrl: "https://www.himalayanrides.com",
   description:
-    "Welcome to Himalayan Rides - providing the best taxi services and travel assistance in Dalhousie and Himachal Pradesh. Explore our travel packages and taxi services for a smooth journey in the scenic landscapes of HP.",
+    "Premium taxi services, guided tours, and hotel arrangements in Dalhousie & Himachal Pradesh. Experience the Himalayas with comfort and style.",
   keywords:
-    "Dalhousie taxi service, Himachal Pradesh cab, travel Dalhousie HP, best taxi Dalhousie, HP sightseeing tour, Himalayan rides, taxi booking Dalhousie",
-  ogImage: "/assets/og-image.jpg", // Assuming this image is in your public/assets folder
-  googleReviews: "https://www.google.com/search?q=himalayan+rides+reviews",
-  instagram: "https://instagram.com/himalayanrides",
-  youtube: "https://youtube.com/himalayanrides",
-  phone: "+91-9876543210",
+    "Dalhousie taxi, Himachal tours, hotel booking, travel guide, Himalayan rides",
+  websiteUrl: "https://himalayanrides.com",
+  ogImage: "https://himalayanrides.com/og-image.jpg",
+  phone: "+91 9876543210",
+  googleReviews: "https://g.page/himalayanrides/review",
 };
 
-const featuredDestinations = [
-  {
-    title: "Dalhousie",
-    description:
-      "Discover the colonial charm of Dalhousie, nestled amidst pine-clad valleys. Perfect for a serene getaway with stunning views of the Dhauladhar range.",
-    highlights: ["Khajjiar - Mini Switzerland", "Dainkund Peak", "St. John's Church"],
-    image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80",
-  },
-  {
-    title: "Manali",
-    description:
-      "A paradise for adventure lovers, Manali offers breathtaking views, thrilling activities, and a vibrant local culture.",
-    highlights: ["Rohtang Pass", "Solang Valley", "Hidimba Temple"],
-    image: "https://images.unsplash.com/photo-1592194996308-7b43878e84a6?auto=format&fit=crop&w=600&q=80",
-  },
-  {
-    title: "Shimla",
-    description:
-      "The queen of hills, Shimla is known for its colonial architecture, bustling markets, and panoramic views of the Himalayas.",
-    highlights: ["The Ridge", "Mall Road", "Jakhoo Temple"],
-    image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80",
-  },
-];
-
-const ourFleet = [
-  {
-    name: "Sedan",
-    description: "Ideal for small families or solo travelers. Comfortable and fuel-efficient.",
-    capacity: "4 Passengers",
-    price: "₹30/km",
-    image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80",
-  },
-  {
-    name: "SUV",
-    description: "Perfect for group travel or rugged terrains. Spacious and powerful.",
-    capacity: "6 Passengers",
-    price: "₹40/km",
-    image: "https://images.unsplash.com/photo-1581235720704-06d3acfcb36f?auto=format&fit=crop&w=600&q=80",
-  },
-  {
-    name: "Innova",
-    description: "Great for family trips with extra space and luxury features.",
-    capacity: "7 Passengers",
-    price: "₹45/km",
-    image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80",
-  },
-  {
-    name: "Tempo Traveller",
-    description: "Best for large groups. Enjoy a hassle-free journey with ample space.",
-    capacity: "12 Passengers",
-    price: "₹60/km",
-    image: "https://images.unsplash.com/photo-1581235720704-06d3acfcb36f?auto=format&fit=crop&w=600&q=80",
-  },
-];
-
-const customerTestimonials = [
-  {
-    name: "Rohit Sharma",
-    review:
-      "Himalayan Rides made our trip to Manali unforgettable! The driver was knowledgeable, and the car was in great condition.",
-    rating: 5,
-  },
-  {
-    name: "Priya Kapoor",
-    review:
-      "We booked a sedan for our Shimla tour, and the experience was seamless. Highly recommend their services!",
-    rating: 4.5,
-  },
-  {
-    name: "Amit Verma",
-    review:
-      "The Tempo Traveller was perfect for our group of 10. The journey to Dalhousie was comfortable and enjoyable.",
-    rating: 5,
-  },
-];
-
 const Home = () => {
+  const { theme } = useTheme();
+
+  const services = [
+    {
+      title: "Taxi Services",
+      description: "Reliable and comfortable rides across Himachal Pradesh",
+      icon: "🚖",
+    },
+    {
+      title: "Guided Tours",
+      description: "Expert local guides for unforgettable experiences",
+      icon: "🗺️",
+    },
+    {
+      title: "Hotel Arrangements",
+      description: "Best stays tailored to your preferences",
+      icon: "🏨",
+    },
+    {
+      title: "Custom Packages",
+      description: "Personalized itineraries for your perfect trip",
+      icon: "🎯",
+    },
+  ];
+
+  const destinations = [
+    { name: "Dalhousie", image: "/citiesImages/dalhousie_khajiyar.jpg" },
+    { name: "Dharamshala", image: "/citiesImages/dharmashala1.jpg" },
+    { name: "Manali", image: "/citiesImages/manali2.jpg" },
+    { name: "Shimla", image: "/citiesImages/shimla2.jpg" },
+  ];
+  const fleet = [
+    {
+      name: "Swift Dzire",
+      type: "Sedan",
+      capacity: "4 passengers",
+      features: ["AC", "Comfortable seats", "Ample luggage space"],
+      image: "/cars/dizire.jpg",
+      price: "₹12/km",
+    },
+    {
+      name: "Toyota Innova Crysta",
+      type: "MPV",
+      capacity: "7 passengers",
+      features: ["Premium AC", "Spacious interior", "Extra luggage space"],
+      image: "/cars/innova.jpg",
+      price: "₹18/km",
+    },
+    {
+      name: "Toyota Etios",
+      type: "Sedan",
+      capacity: "4 passengers",
+      features: ["AC", "Fuel efficient", "Smooth ride"],
+      image: "/cars/etios.jpg",
+      price: "₹14/km",
+    },
+    {
+      name: "Brezza",
+      type: "Sedan",
+      capacity: "4 passengers",
+      features: ["AC", "Spacious interior", "Great mileage"],
+      image: "/cars/brezza2017.jpg",
+      price: "₹13/km",
+    },
+  ];
   return (
     <>
       <Head>
-        <title>{metaTags.businessName} - Taxi Service in Dalhousie & Himachal Pradesh</title>
+        <title>
+          {metaTags.businessName} - Taxi Service in Dalhousie & Himachal Pradesh
+        </title>
         <meta name="description" content={metaTags.description} />
         <meta name="keywords" content={metaTags.keywords} />
         <meta name="author" content={metaTags.businessName} />
         <meta name="robots" content="index, follow" />
         <meta name="geo.region" content="IN-HP" />
         <meta name="geo.placename" content="Dalhousie, Himachal Pradesh" />
-        <meta property="og:title" content={`${metaTags.businessName} - Taxi Service in Dalhousie & HP`} />
+        <meta
+          property="og:title"
+          content={`${metaTags.businessName} - Taxi Service in Dalhousie & HP`}
+        />
         <meta property="og:description" content={metaTags.description} />
         <meta property="og:type" content="website" />
         <meta property="og:url" content={metaTags.websiteUrl} />
@@ -115,161 +108,298 @@ const Home = () => {
         <meta property="og:image:height" content="630" />
         <meta property="og:locale" content="en_US" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={`${metaTags.businessName} - Taxi Service in Dalhousie & HP`} />
+        <meta
+          name="twitter:title"
+          content={`${metaTags.businessName} - Taxi Service in Dalhousie & HP`}
+        />
         <meta name="twitter:description" content={metaTags.description} />
         <meta name="twitter:image" content={metaTags.ogImage} />
         <meta name="twitter:creator" content="@himalayanrides" />
         <meta name="phone" content={metaTags.phone} />
         <link rel="canonical" href={metaTags.websiteUrl} />
-        <link rel="author" href="https://www.linkedin.com/company/himalayanrides" />
+        <link
+          rel="author"
+          href="https://www.linkedin.com/company/himalayanrides"
+        />
         <link rel="review" href={metaTags.googleReviews} />
       </Head>
 
-      <div className="bg-[var(--background)] text-[var(--foreground)]">
-        {/* Hero Section */}
-        <section className="relative bg-gradient-to-r from-blue-600 to-indigo-700 text-white py-20 md:py-32">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h1 className="text-4xl md:text-5xl font-bold mb-4 animate-fade-in">
-              Welcome to Himalayan Rides!
-            </h1>
-            <p className="text-lg md:text-xl mb-8 animate-fade-in-delay">
-              Your trusted taxi service provider in Dalhousie and Himachal Pradesh.
-              Explore the scenic landscapes of HP with our reliable travel packages and taxi services.
-            </p>
-            <Link href="/contact">
-              <span className="inline-block bg-yellow-400 text-gray-900 px-6 py-3 rounded-md font-semibold hover:bg-yellow-500 transition transform hover:scale-105">
-                Book Now
-              </span>
+      {/* Hero Section */}
+      <section
+        className={`relative h-screen flex items-center justify-center bg-cover bg-center ${
+          theme === "dark" ? "bg-gray-900" : "bg-blue-50"
+        }`}
+      >
+        <div className="absolute inset-0 bg-black/50"></div>
+        <div className="relative z-10 text-center px-4">
+          <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
+            Explore the Himalayas with Ease
+          </h1>
+          <p className="text-xl text-white mb-8 max-w-2xl mx-auto">
+            Premium taxi services, guided tours, and hotel arrangements in
+            Dalhousie & Himachal Pradesh
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link
+              href="/book-now"
+              className="px-8 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition duration-300"
+            >
+              Book Now
+            </Link>
+            <Link
+              href="/services"
+              className="px-8 py-3 bg-white hover:bg-gray-100 text-blue-600 font-medium rounded-lg transition duration-300"
+            >
+              Our Services
             </Link>
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* Featured Destinations Section */}
-        <section className="py-16">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-3xl font-bold text-center mb-12">
-              Explore Top Destinations in Himachal Pradesh
-            </h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-              {featuredDestinations.map((destination, index) => (
-                <div
-                  key={index}
-                  className="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition duration-300"
-                >
-                  <Image
-                    src={destination.image}
-                    alt={destination.title}
-                    className="w-full h-48 object-cover"
-                    width={600} // Specify the width of the image
-                    height={48 * (600 / 800)} // Maintain aspect ratio, adjust if needed
-                  />
-                  <div className="p-6">
-                    <h3 className="text-xl font-semibold mb-4">{destination.title}</h3>
-                    <p className="text-gray-600 dark:text-gray-300 mb-4">
-                      {destination.description}
-                    </p>
-                    <ul className="list-disc list-inside text-gray-600 dark:text-gray-300 mb-4">
-                      {destination.highlights.map((highlight, i) => (
-                        <li key={i}>{highlight}</li>
-                      ))}
-                    </ul>
-                    <Link href={`/destinations/${destination.title.toLowerCase()}`}>
-                      <span className="inline-block text-blue-500 hover:underline">
-                        Learn More
-                      </span>
-                    </Link>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Our Fleet Section */}
-        <section className="py-16 bg-gray-100 dark:bg-gray-800">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-3xl font-bold text-center mb-12">
-              Our Fleet - Travel in Comfort
-            </h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-              {ourFleet.map((car, index) => (
-                <div
-                  key={index}
-                  className="bg-white dark:bg-gray-700 rounded-lg shadow-lg overflow-hidden text-center transform hover:scale-105 transition duration-300"
-                >
-                  <Image
-                    src={car.image}
-                    alt={car.name}
-                    className="w-full h-40 object-cover"
-                    width={600} // Specify the width of the image
-                    height={40 * (600 / 800)} // Maintain aspect ratio, adjust if needed
-                  />
-                  <div className="p-6">
-                    <h3 className="text-xl font-semibold mb-4">{car.name}</h3>
-                    <p className="text-gray-600 dark:text-gray-300 mb-4">
-                      {car.description}
-                    </p>
-                    <p className="text-gray-600 dark:text-gray-300 mb-2">
-                      <strong>Capacity:</strong> {car.capacity}
-                    </p>
-                    <p className="text-gray-600 dark:text-gray-300 mb-4">
-                      <strong>Price:</strong> {car.price}
-                    </p>
-                    <Link href="/booking">
-                      <span className="inline-block bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition">
-                        Book This Car
-                      </span>
-                    </Link>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Customer Testimonials Section */}
-        <section className="py-16">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-3xl font-bold text-center mb-12">
-              What Our Customers Say
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {customerTestimonials.map((testimonial, index) => (
-                <div
-                  key={index}
-                  className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 transform hover:scale-105 transition duration-300"
-                >
-                  <p className="text-gray-600 dark:text-gray-300 mb-4">
-                    &quot;{testimonial.review}&quot;
-                  </p>
-                  <p className="font-semibold">{testimonial.name}</p>
-                  <p className="text-yellow-400">
-                    {"★".repeat(Math.floor(testimonial.rating))}
-                    {testimonial.rating % 1 !== 0 && "☆"}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Call to Action Section */}
-        <section className="py-16 bg-blue-600 text-white">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 className="text-3xl font-bold mb-4">
-              Ready to Explore Himachal Pradesh?
-            </h2>
-            <p className="text-lg mb-8">
-              Book your taxi with Himalayan Rides today and embark on a journey of a lifetime!
+      {/* Services Section */}
+      <section
+        className={`py-16 ${theme === "dark" ? "bg-gray-800" : "bg-white"}`}
+      >
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold mb-4">Our Services</h2>
+            <p
+              className={`max-w-2xl mx-auto ${
+                theme === "dark" ? "text-gray-300" : "text-gray-600"
+              }`}
+            >
+              We offer comprehensive travel solutions to make your Himalayan
+              journey unforgettable
             </p>
-            <Link href="/contact">
-              <span className="inline-block bg-yellow-400 text-gray-900 px-6 py-3 rounded-md font-semibold hover:bg-yellow-500 transition transform hover:scale-105">
-                Get in Touch
-              </span>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {services.map((service, index) => (
+              <div
+                key={index}
+                className={`p-6 rounded-lg shadow-lg transition-all duration-300 hover:shadow-xl ${
+                  theme === "dark"
+                    ? "bg-gray-700 hover:bg-gray-600"
+                    : "bg-white hover:bg-blue-50"
+                }`}
+              >
+                <div className="text-4xl mb-4">{service.icon}</div>
+                <h3 className="text-xl font-semibold mb-2">{service.title}</h3>
+                <p
+                  className={
+                    theme === "dark" ? "text-gray-300" : "text-gray-600"
+                  }
+                >
+                  {service.description}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+      {/* Our Fleet Section */}
+      <section
+        className={`py-16 ${theme === "dark" ? "bg-gray-900" : "bg-blue-50"}`}
+      >
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold mb-4">Our Premium Fleet</h2>
+            <p
+              className={`max-w-2xl mx-auto ${
+                theme === "dark" ? "text-gray-300" : "text-gray-600"
+              }`}
+            >
+              Well-maintained vehicles for comfortable and safe journeys in the
+              Himalayas
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {fleet.map((vehicle, index) => (
+              <div
+                key={index}
+                className={`rounded-lg overflow-hidden shadow-lg transition-all duration-300 hover:shadow-xl ${
+                  theme === "dark" ? "bg-gray-800" : "bg-white"
+                }`}
+              >
+                <div className="relative h-48 w-full">
+                  <Image
+                    src={vehicle.image}
+                    alt={vehicle.name}
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+                <div className="p-6">
+                  <div className="flex justify-between items-start mb-2">
+                    <h3 className="text-xl font-bold">{vehicle.name}</h3>
+                    <span
+                      className={`px-2 py-1 rounded text-sm ${
+                        theme === "dark"
+                          ? "bg-blue-900 text-blue-100"
+                          : "bg-blue-100 text-blue-800"
+                      }`}
+                    >
+                      {vehicle.type}
+                    </span>
+                  </div>
+                  <p
+                    className={`mb-3 ${
+                      theme === "dark" ? "text-gray-300" : "text-gray-600"
+                    }`}
+                  >
+                    <strong>Capacity:</strong> {vehicle.capacity}
+                  </p>
+                  <ul className="mb-4 space-y-1">
+                    {vehicle.features.map((feature, i) => (
+                      <li
+                        key={i}
+                        className={`flex items-center ${
+                          theme === "dark" ? "text-gray-300" : "text-gray-700"
+                        }`}
+                      >
+                        <span className="mr-2">✓</span> {feature}
+                      </li>
+                    ))}
+                  </ul>
+                  <div
+                    className={`mt-4 p-3 rounded-lg text-center font-bold ${
+                      theme === "dark"
+                        ? "bg-gray-700 text-blue-300"
+                        : "bg-blue-100 text-blue-700"
+                    }`}
+                  >
+                    Starting at {vehicle.price}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+      {/* Popular Destinations */}
+      <section
+        className={`py-16 ${theme === "dark" ? "bg-gray-900" : "bg-blue-50"}`}
+      >
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold mb-4">Popular Destinations</h2>
+            <p
+              className={`max-w-2xl mx-auto ${
+                theme === "dark" ? "text-gray-300" : "text-gray-600"
+              }`}
+            >
+              Explore the breathtaking beauty of Himachal Pradesh with our
+              curated destinations
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {destinations.map((destination, index) => (
+              <div
+                key={index}
+                className="group relative overflow-hidden rounded-lg shadow-md"
+              >
+                <Image
+                  src={destination.image}
+                  alt={destination.name}
+                  width={400}
+                  height={300}
+                  className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end p-4">
+                  <h3 className="text-white text-xl font-bold">
+                    {destination.name}
+                  </h3>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials */}
+      <section
+        className={`py-16 ${theme === "dark" ? "bg-gray-800" : "bg-white"}`}
+      >
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold mb-4">What Our Customers Say</h2>
+            <p
+              className={`max-w-2xl mx-auto ${
+                theme === "dark" ? "text-gray-300" : "text-gray-600"
+              }`}
+            >
+              Hear from travelers who've experienced our services
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[1, 2, 3].map((item) => (
+              <div
+                key={item}
+                className={`p-6 rounded-lg ${
+                  theme === "dark" ? "bg-gray-700" : "bg-blue-50"
+                }`}
+              >
+                <div className="flex items-center mb-4">
+                  <div className="text-yellow-400 text-xl">★★★★★</div>
+                </div>
+                <p
+                  className={`mb-4 ${
+                    theme === "dark" ? "text-gray-300" : "text-gray-700"
+                  }`}
+                >
+                  "The best travel experience in Himachal! The guides were
+                  knowledgeable and the taxi service was always on time. Highly
+                  recommended!"
+                </p>
+                <div className="flex items-center">
+                  <div className="w-10 h-10 rounded-full bg-gray-300 mr-3"></div>
+                  <div>
+                    <h4 className="font-medium">Rahul Sharma</h4>
+                    <p
+                      className={`text-sm ${
+                        theme === "dark" ? "text-gray-400" : "text-gray-500"
+                      }`}
+                    >
+                      Delhi, India
+                    </p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section
+        className={`py-16 ${theme === "dark" ? "bg-blue-900" : "bg-blue-600"}`}
+      >
+        <div className="container mx-auto px-4 text-center">
+          <h2 className="text-3xl font-bold text-white mb-4">
+            Ready for Your Himalayan Adventure?
+          </h2>
+          <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
+            Contact us now to plan your perfect trip with our expert team
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link
+              href="/contact"
+              className="px-8 py-3 bg-white hover:bg-gray-100 text-blue-600 font-medium rounded-lg transition duration-300"
+            >
+              Contact Us
+            </Link>
+            <Link
+              href="/tel:+919876543210"
+              className="px-8 py-3 border-2 border-white hover:bg-white/10 text-white font-medium rounded-lg transition duration-300"
+            >
+              Call Now
             </Link>
           </div>
-        </section>
-      </div>
+        </div>
+      </section>
     </>
   );
 };
