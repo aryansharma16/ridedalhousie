@@ -137,7 +137,7 @@ const Home = () => {
           </h1>
           <p className="text-xl text-white mb-8 max-w-2xl mx-auto">
             Premium taxi services, guided tours, and hotel arrangements in
-            Dalhousie & Himachal Pradesh
+            Dalhousie &amp; Himachal Pradesh
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
@@ -330,7 +330,7 @@ const Home = () => {
                 theme === "dark" ? "text-gray-300" : "text-gray-600"
               }`}
             >
-              Hear from travelers who've experienced our services
+              Hear from travelers who&apos;ve experienced our services
             </p>
           </div>
 
@@ -350,9 +350,9 @@ const Home = () => {
                     theme === "dark" ? "text-gray-300" : "text-gray-700"
                   }`}
                 >
-                  "The best travel experience in Himachal! The guides were
+                  &quot;The best travel experience in Himachal! The guides were
                   knowledgeable and the taxi service was always on time. Highly
-                  recommended!"
+                  recommended!&quot;
                 </p>
                 <div className="flex items-center">
                   <div className="w-10 h-10 rounded-full bg-gray-300 mr-3"></div>
