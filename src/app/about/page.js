@@ -40,7 +40,7 @@ const AboutPage = () => {
     {
       name: "Priya Singh",
       role: "Tour Guide",
-      bio: "Certified travel guide specializing in Himachal's culture, history, and hidden gems.",
+      bio: "Certified travel guide specializing in Himachals culture, history, and hidden gems.",
       image: "/profiles/profile1.jpg",
     },
     {
@@ -64,7 +64,7 @@ const AboutPage = () => {
     },
     {
       quote:
-        "Priya's knowledge of local history transformed our trip from good to unforgettable!",
+        "Priyas knowledge of local history transformed our trip from good to unforgettable!",
       author: "David & Sarah, UK",
     },
   ];
@@ -214,7 +214,7 @@ const AboutPage = () => {
             >
               Founded in 2010 by Raj Sharma, Himalayan Rides began with a single
               taxi and a passion for sharing the beauty of Himachal Pradesh.
-              Today, we're a team of 12 dedicated professionals serving over
+              Today, were a team of 12 dedicated professionals serving over
               5,000 happy customers annually.
             </p>
           </motion.div>
@@ -349,7 +349,7 @@ const AboutPage = () => {
                 theme === "dark" ? "text-gray-300" : "text-gray-600"
               }`}
             >
-              Hear from those who've explored Himachal with us
+              Hear from those whove explored Himachal with us
             </p>
           </motion.div>
 
