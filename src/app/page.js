@@ -5,6 +5,7 @@ import Head from "next/head";
 import Link from "next/link";
 import Image from "next/image";
 import { useTheme } from "@/context/ThemeContext";
+import { motion } from "framer-motion"; // Import motion
 
 const metaTags = {
   businessName: "Himalayan Rides",
@@ -113,7 +114,7 @@ const Home = () => {
 
   return (
     <>
-      <Head>
+  <Head>
         <title>
           {metaTags.businessName} - Taxi Service in Dalhousie & Himachal Pradesh
         </title>
@@ -123,10 +124,7 @@ const Home = () => {
         <meta name="robots" content="index, follow" />
         <meta name="geo.region" content="IN-HP" />
         <meta name="geo.placename" content="Dalhousie, Himachal Pradesh" />
-        <meta
-          property="og:title"
-          content={`${metaTags.businessName} - Taxi Service in Dalhousie & HP`}
-        />
+
         <meta property="og:description" content={metaTags.description} />
         <meta property="og:type" content="website" />
         <meta property="og:url" content={metaTags.websiteUrl} />
@@ -135,37 +133,54 @@ const Home = () => {
         <meta property="og:image:height" content="630" />
         <meta property="og:locale" content="en_US" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta
-          name="twitter:title"
-          content={`${metaTags.businessName} - Taxi Service in Dalhousie & HP`}
-        />
+
         <meta name="twitter:description" content={metaTags.description} />
         <meta name="twitter:image" content={metaTags.ogImage} />
         <meta name="twitter:creator" content="@himalayanrides" />
         <meta name="phone" content={metaTags.phone} />
         <link rel="canonical" href={metaTags.websiteUrl} />
-        <link
-          rel="author"
-          href="https://www.linkedin.com/company/himalayanrides"
-        />
+        <link rel="author" href="[suspicious link removed]" />
         <link rel="review" href={metaTags.googleReviews} />
       </Head>
 
       {/* Hero Section */}
-      <section
+      <motion.section
         className={`relative h-screen flex items-center justify-center bg-cover bg-center ${
           theme === "dark" ? "bg-gray-900" : "bg-blue-50"
         }`}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.8 }}
       >
         <div className="absolute inset-0 bg-black/50"></div>
-        <div className="relative z-10 text-center px-4">
-          <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
+        <motion.div
+          className="relative z-10 text-center px-4"
+          initial={{ y: 20, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+        >
+          <motion.h1
+            className="text-4xl md:text-6xl font-bold text-white mb-6"
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{
+              duration: 0.5,
+              delay: 0.4,
+              type: "spring",
+              stiffness: 100,
+            }}
+          >
             Explore the Himalayas with Ease
-          </h1>
-          <p className="text-xl text-white mb-8 max-w-2xl mx-auto">
+          </motion.h1>
+          <motion.p
+            className="text-xl text-white mb-8 max-w-2xl mx-auto"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.6 }}
+          >
             Premium taxi services, guided tours, and hotel arrangements in
             Dalhousie &amp; Himachal Pradesh
-          </p>
+          </motion.p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="/book-now"
@@ -180,15 +195,25 @@ const Home = () => {
               Our Services
             </Link>
           </div>
-        </div>
-      </section>
+        </motion.div>
+      </motion.section>
 
       {/* Services Section */}
-      <section
+      <motion.section
         className={`py-16 ${theme === "dark" ? "bg-gray-800" : "bg-white"}`}
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.7, delay: 0.2 }}
       >
         <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
+          <motion.div
+            className="text-center mb-12"
+            initial={{ y: 20, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+          >
             <h2 className="text-3xl font-bold mb-4">Our Services</h2>
             <p
               className={`max-w-2xl mx-auto ${
@@ -198,17 +223,21 @@ const Home = () => {
               We offer comprehensive travel solutions to make your Himalayan
               journey unforgettable
             </p>
-          </div>
+          </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {services.map((service, index) => (
-              <div
+              <motion.div
                 key={index}
                 className={`p-6 rounded-lg shadow-lg transition-all duration-300 hover:shadow-xl ${
                   theme === "dark"
                     ? "bg-gray-700 hover:bg-gray-600"
                     : "bg-white hover:bg-blue-50"
                 }`}
+                initial={{ y: 30, opacity: 0 }}
+                whileInView={{ y: 0, opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: 0.6 + index * 0.1 }}
               >
                 <div className="text-4xl mb-4">{service.icon}</div>
                 <h3 className="text-xl font-semibold mb-2">{service.title}</h3>
@@ -219,17 +248,27 @@ const Home = () => {
                 >
                   {service.description}
                 </p>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
-      </section>
+      </motion.section>
       {/* Our Fleet Section */}
-      <section
+      <motion.section
         className={`py-16 ${theme === "dark" ? "bg-gray-900" : "bg-blue-50"}`}
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.7, delay: 0.2 }}
       >
         <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
+          <motion.div
+            className="text-center mb-12"
+            initial={{ y: 20, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+          >
             <h2 className="text-3xl font-bold mb-4">Our Premium Fleet</h2>
             <p
               className={`max-w-2xl mx-auto ${
@@ -239,15 +278,19 @@ const Home = () => {
               Well-maintained vehicles for comfortable and safe journeys in the
               Himalayas
             </p>
-          </div>
+          </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {fleet.map((vehicle, index) => (
-              <div
+              <motion.div
                 key={index}
                 className={`rounded-lg overflow-hidden shadow-lg transition-all duration-300 hover:shadow-xl ${
                   theme === "dark" ? "bg-gray-800" : "bg-white"
                 }`}
+                initial={{ y: 30, opacity: 0 }}
+                whileInView={{ y: 0, opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: 0.6 + index * 0.1 }}
               >
                 <div className="relative h-48 w-full">
                   <Image
@@ -299,17 +342,27 @@ const Home = () => {
                     Starting at {vehicle.price}
                   </div>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
-      </section>
+      </motion.section>
       {/* Popular Destinations */}
-      <section
+      <motion.section
         className={`py-16 ${theme === "dark" ? "bg-gray-900" : "bg-blue-50"}`}
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.7, delay: 0.2 }}
       >
         <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
+          <motion.div
+            className="text-center mb-12"
+            initial={{ y: 20, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+          >
             <h2 className="text-3xl font-bold mb-4">Popular Destinations</h2>
             <p
               className={`max-w-2xl mx-auto ${
@@ -319,13 +372,17 @@ const Home = () => {
               Explore the breathtaking beauty of Himachal Pradesh with our
               curated destinations
             </p>
-          </div>
+          </motion.div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {destinations.map((destination, index) => (
-              <div
+              <motion.div
                 key={index}
                 className="group relative overflow-hidden rounded-lg shadow-md"
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.3, delay: 0.6 + index * 0.1 }}
               >
                 <Image
                   src={destination.image}
@@ -339,18 +396,28 @@ const Home = () => {
                     {destination.name}
                   </h3>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* Testimonials */}
-      <section
+      <motion.section
         className={`py-16 ${theme === "dark" ? "bg-gray-800" : "bg-white"}`}
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.7, delay: 0.2 }}
       >
         <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
+          <motion.div
+            className="text-center mb-12"
+            initial={{ y: 20, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+          >
             <h2 className="text-3xl font-bold mb-4">What Our Customers Say</h2>
             <p
               className={`max-w-2xl mx-auto ${
@@ -359,15 +426,19 @@ const Home = () => {
             >
               Hear from travelers who&apos;ve experienced our services
             </p>
-          </div>
+          </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {reviews.map((review, index) => (
-              <div
+              <motion.div
                 key={index}
                 className={`p-6 rounded-lg ${
                   theme === "dark" ? "bg-gray-700" : "bg-blue-50"
                 }`}
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.3, delay: 0.6 + index * 0.1 }}
               >
                 <div className="flex items-center mb-4">
                   <div className="text-yellow-400 text-xl">
@@ -404,23 +475,36 @@ const Home = () => {
                     </p>
                   </div>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* CTA Section */}
-      <section
+      <motion.section
         className={`py-16 ${theme === "dark" ? "bg-blue-900" : "bg-blue-600"}`}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.8 }}
       >
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold text-white mb-4">
+          <motion.h2
+            className="text-3xl font-bold text-white mb-4"
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
             Ready for Your Himalayan Adventure?
-          </h2>
-          <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
+          </motion.h2>
+          <motion.p
+            className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+          >
             Contact us now to plan your perfect trip with our expert team
-          </p>
+          </motion.p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="/contact"
@@ -429,14 +513,14 @@ const Home = () => {
               Contact Us
             </Link>
             <Link
-              href="/tel:+919876543210"
+              href={`tel:${metaTags.phone}`}
               className="px-8 py-3 border-2 border-white hover:bg-white/10 text-white font-medium rounded-lg transition duration-300"
             >
               Call Now
             </Link>
           </div>
         </div>
-      </section>
+      </motion.section>
     </>
   );
 };
