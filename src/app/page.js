@@ -114,7 +114,7 @@ const Home = () => {
 
   return (
     <>
-  <Head>
+      <Head>
         <title>
           {metaTags.businessName} - Taxi Service in Dalhousie & Himachal Pradesh
         </title>
