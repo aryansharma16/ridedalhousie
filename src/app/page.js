@@ -1,11 +1,12 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import Head from "next/head";
 import Link from "next/link";
 import Image from "next/image";
 import { useTheme } from "@/context/ThemeContext";
 import { motion } from "framer-motion"; // Import motion
+import BookCabForm from "@/components/Forms/BookCab";
 
 const metaTags = {
   businessName: "Himalayan Rides",
@@ -21,6 +22,15 @@ const metaTags = {
 
 const Home = () => {
   const { theme } = useTheme();
+  const [isBookingFormOpen, setIsBookingFormOpen] = useState(false);
+
+  const openBookingForm = () => {
+    setIsBookingFormOpen(true);
+  };
+
+  const closeBookingForm = () => {
+    setIsBookingFormOpen(false);
+  };
 
   const services = [
     {
@@ -142,7 +152,18 @@ const Home = () => {
         <link rel="author" href="[suspicious link removed]" />
         <link rel="review" href={metaTags.googleReviews} />
       </Head>
-
+      <BookCabForm
+        isOpen={isBookingFormOpen}
+        onClose={closeBookingForm}
+        requiredFields={[
+          "name",
+          "number",
+          "startDate",
+          "destination",
+          "pickup",
+          "dropoff",
+        ]}
+      />
       {/* Hero Section */}
       <motion.section
         className={`relative h-screen flex items-center justify-center bg-cover bg-center ${
@@ -183,7 +204,8 @@ const Home = () => {
           </motion.p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
-              href="/book-now"
+              href="#" // Prevent default link behavior
+              onClick={openBookingForm}
               className="px-8 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition duration-300"
             >
               Book Now
