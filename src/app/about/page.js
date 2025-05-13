@@ -88,14 +88,28 @@ const AboutPage = () => {
       <Head>
         <title>About Us - {metaTags.businessName} Taxi Service in Dalhousie & HP</title>
         <meta name="description" content={metaTags.description} />
-        {/* ... (keep all other meta tags from your original) ... */}
+        <meta name="keywords" content={metaTags.keywords} />
+        <meta name="author" content={metaTags.businessName} />
+        <meta name="robots" content="index, follow" />
+        <meta property="og:title" content={`About Us - ${metaTags.businessName} Taxi Service in Dalhousie & HP`} />
+        <meta property="og:description" content={metaTags.description} />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={metaTags.websiteUrl} />
+        <meta property="og:image" content={metaTags.ogImage} />
+        <meta property="og:locale" content="en_US" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={`About Us - ${metaTags.businessName} Taxi Service in Dalhousie & HP`} />
+        <meta name="twitter:description" content={metaTags.description} />
+        <meta name="twitter:image" content={metaTags.ogImage} />
+        <meta name="phone" content={metaTags.phone} />
+        <link rel="canonical" href={metaTags.websiteUrl} />
       </Head>
 
       {/* Hero Section */}
       <section className={`relative h-96 flex items-center justify-center ${theme === 'dark' ? 'bg-gray-900' : 'bg-blue-50'}`}>
         <div className="absolute inset-0 bg-black/50"></div>
         <div className="relative z-10 text-center px-4">
-          <motion.h1 
+          <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
@@ -198,13 +212,13 @@ const AboutPage = () => {
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold mb-4">Traveler Stories</h2>
             <p className={`max-w-2xl mx-auto ${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'}`}>
-              Hear from those who've explored Himachal with us
+              Hear from those who&apos;ve explored Himachal with us
             </p>
           </div>
 
           <div className="max-w-4xl mx-auto">
             <div className="relative overflow-hidden">
-              <div className="flex transition-transform duration-500">
+            <div className="flex overflow-x-auto transition-transform duration-500">
                 {testimonials.map((testimonial, index) => (
                   <motion.div
                     key={index}
@@ -212,7 +226,7 @@ const AboutPage = () => {
                     whileInView={{ opacity: 1 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.5, delay: index * 0.3 }}
-                    className={`min-w-full p-8 rounded-lg ${theme === 'dark' ? 'bg-gray-700' : 'bg-blue-50'}`}
+                    className={`min-w-[calc(100%-1rem)] sm:min-w-[calc(50%-1rem)] md:min-w-[calc(33.33%-1rem)] mx-2 p-8 rounded-lg ${theme === 'dark' ? 'bg-gray-700' : 'bg-blue-50'}`}
                   >
                     <div className="text-yellow-400 text-2xl mb-4">★★★★★</div>
                     <p className={`text-lg italic mb-4 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>
